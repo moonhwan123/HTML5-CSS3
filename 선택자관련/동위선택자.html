@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*h1태그 '바로 뒤'에 위치하는 h2 태그의 color속성에 red 키워드를 적용*/
+        h1+h2{color: red;}
+
+        /*h1태그 '뒤'에 위치하는 h2 태그의 background-color속성에 orange 키워드를 적용*/
+        h1~h2{background-color:  orange;}
+    </style>
+</head>
+<body>
+    <h1 id="title">동위 선택자</h1>
+    <hr/>
+    <h1>Header-1</h1>
+    <h2>Hearder-2</h2>
+    <h2>Hearder-2</h2>
+    <h2>Hearder-2</h2>
+    <h2>Hearder-2</h2>
+</body>
+</html>

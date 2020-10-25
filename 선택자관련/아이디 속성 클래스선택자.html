@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*아이디 선택자*/
+        #header{width: 800px; margin: 0 auto;
+        background: darkgrey;}
+
+        #wrap{width: 800px;
+        margin: 0 auto; overflow: hidden;}
+        
+        #aside{width: 200px; float: left;
+        background: darkslateblue;}
+
+        #content{width: 600px; float: left;
+        background: darkolivegreen;}
+
+        /*클래스 선택자*/
+        .select{color: darkslateblue;}
+
+        /*여러 개의 클래스 선택자 사용*/
+        .item{color: deeppink;}
+        .header{background-color: deepskyblue;}
+
+        /*속성선택자*/
+        input[type=text]{background: firebrick;}
+        input[type=password]{background: gold;}
+    </style>
+</head>
+<body>
+    <h1>아이디 선택자/ 클래스 선택자</h1>
+    <hr/><br/>
+
+    <div id="header">
+        <h1>header</h1>
+    </div>
+
+    <div id="wrap">
+        <div id="aside"><h1>aside</h1></div>
+        <div id="content"><h1>content</h1></div>
+    </div>
+
+    <hr/><br/>
+
+    <ul>
+        <li class="select">Lorem Ipsum</li>
+        <li>Lorem Ipsum</li>
+        <li class="select">Lorem Ipsum</li>
+        <li >Lorem Ipsum</li>
+    </ul>
+
+    <h1 class="item header">Lorem Ipsum</h1>
+
+    <hr/><br/>
+    <form>
+        <input />
+        <input type="text" value="text"/>
+        <input type="password" value="password"/>
+    </form>
+</body>
+</html>

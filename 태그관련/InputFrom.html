@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>입력 양식 태그</h1>
+    <hr/>
+    <br/>
+
+    <h2>기본사용</h2>
+    <form>
+        <input type="text" name="name"/> <br/>
+        <input type="password" name="password"/> <br/>
+        <input type="file" name="file"/> <br/>
+        <input type="submit"/> <br/>
+    </form>
+    <hr/>
+    <br/>
+
+    <h2>label사용</h2>
+    <form>
+        <label for="name">이름</label>
+        <input type="text" id="name" />
+    </form>
+    <hr/>
+    <br/>
+
+    <h2>여러입력 양식들</h2>
+    <form>
+        <input type="color"></form> <br/>
+        <input type="date"></form> <br/>
+        <input type="datetime"></form> <br/>
+        <input type="datetime-local"></form> <br/>
+        <input type="email"></form> <br/>
+        <input type="month"></form> <br/>
+        <input type="number"></form> <br/>
+        <input type="range"></form> <br/>
+        <input type="search"></form> <br/>
+        <input type="tel"></form> <br/>
+        <input type="time"></form> <br/>
+        <input type="url"></form> <br/>
+        <input type="week"></form> <br/>
+    </form>
+    <hr/>
+    <br/>
+
+    <h2>TextArea Tag</h2>
+    <textarea>textarea</textarea>
+    <hr/>
+    <br/>
+
+    <h2>Select Tag</h2>
+    <select>
+        <option>김밥</option>
+        <option>떡볶이</option>
+        <option>순대</option>
+        <option>오뎅</option>
+    </select>
+    <br/><br/>
+
+    <select  multiple="multiple">
+        <option>김밥</option>
+        <option>떡볶이</option>
+        <option>순대</option>
+        <option>오뎅</option>
+    </select>
+    <br/><br/>
+
+    <!--optgroup tag-->
+    <select>
+        <optgroup label="A">
+            <option>A-1</option>
+            <option>A-2</option>
+            <option>A-3</option>
+        </optgroup>
+        <optgroup label="B">
+            <option>B-1</option>
+            <option>B-2</option>
+            <option>B-3</option>
+        </optgroup>
+    </select>
+    <hr/>
+    <br/>
+
+    <h2>Fieldset Tag/Legend Tag</h2>
+    <form>
+        <fieldset>
+            <legend>입력 양식</legend>
+            <table>
+                <tr>
+                    <td><label for="name">이름</label></td>
+                    <td><input id="name" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">이메일</label></td>
+                    <td><input id="email" type="email"></td>
+                </tr>
+            </table>
+            <input type="submit"/>
+        </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:enabled{background-color: white;}
+        input:disabled{background-color: gray;}
+        input:focus{background-color: orange;}
+        /*input태그의 type속성값이 체크박스인 태그가 체크 되었을때 바로 뒤에 위치하는 div태그의 높이를 0으로 한다.*/
+        input[type=checkbox]:checked + div{
+            height: 0px;
+        }
+        div{
+            overflow: hidden;
+            width: 650px; height: 300px;
+            /*변환 효과*/
+            -ms-transition-duration: 1s;
+            -webkit-transition-duration: 1s;
+            -moz-transition-duration: 1s;
+            transition-duration: 1s;
+        }
+    </style>
+</head>
+<body>
+    <h1>상태 선택자</h1>
+    <hr/>
+
+    <h2>Enabled</h2>
+    <input/>
+    <h2>Disabled</h2>
+    <input disabled="disabled"/>
+
+    <br/><hr/><br/>
+
+    <label for="aaa">aaa</label>
+    <input type="checkbox" name="aaa"></input>
+    <div>
+        <h1>Lorem Ipsum</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore, quam, consequuntur iure, corporis cupiditate obcaecati possimus hic adipisci aliquid inventore at vero facere? Sequi non molestiae alias sapiente nihil facilis!</p>
+    </div>
+
+
+</body>
+</html>
