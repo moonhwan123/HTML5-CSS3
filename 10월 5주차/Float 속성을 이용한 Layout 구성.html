@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 960px;
+            margin: 0 auto;
+        }
+        #aside{
+            width: 200px;
+            float: left;
+        }
+        #section{
+            width: 760px;
+            float: left;
+        }
+        #wrap{
+            /*float을 사용한 부모에게 이걸 사용한다. 위치잡기 공식*/
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"><h1>header</h1></div>
+
+    <div id="navigation"><h1>navigation</h1></div>
+
+    <div id="wrap">
+        <div id="aside">
+            <h1>Aside</h1>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim quam aut inventore. Numquam quo atque illum, ullam eum animi quis suscipit ab eligendi nisi saepe necessitatibus eius, eveniet, incidunt ea!</p>
+        </div>
+        <div id="section">
+            <h1>Section</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero quidem, atque quas inventore dolorem maxime molestiae dolore asperiores quos ipsam, deleniti consequuntur. Sint pariatur laborum ipsa quis in voluptas exercitationem.</p>
+        </div>
+    </div>
+
+    <div id="footer"><h1>footer</h1></div>
+</body>
+</html>

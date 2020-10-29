@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            /*태그를 화면에서 보이지 않게한다. - none*/
+            /*쌓아올린다 - block*/
+            /*옆으로 배치 - inline*/
+            display: inline-block;
+
+            background-color: red;
+            width: 300px; height: 50px;
+            margin: 10px;
+
+            /*
+                inline / inline-block(block)의 차이
+
+                inline은 넓이,높이속성이 적용x 
+                margin도 좌우로만 지정된다.
+
+                반면, inline-block은 넓이,높이속성이 적용o
+                margin도 상하좌우 적용된다.
+            */
+
+            /*visiblity속성 - 대상을 보이거나 보이지 않게 한다.*/
+            
+            /*
+                visibility: hidden; 과 display:none;의 차이는 
+                none은 아예 없에버리고, hidden은 보이지만 않게한다.
+            */
+
+            /*opacity속성 - 투명도 조절*/
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body>
+    <sapn>Dummy</sapn>
+    <div id="box">
+        <sapn>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus officiis incidunt, </sapn>
+    </div>
+    <sapn>Dummy</sapn>
+
+</body>
+</html>

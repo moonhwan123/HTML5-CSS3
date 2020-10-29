@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text-shadow 속성</title>
+    <style>
+        #h1-1{
+            text-shadow: 5px 5px 5px black;
+            /*           우  하 흐림도 색상    */
+        }
+        #div-1{
+            border: 3px solid black;
+            box-shadow: 10px 10px 30px black;
+            text-shadow: 5px 5px 4px black, 5px 5px 4px orange; /* 이처럼 중첩도 가능 */
+        }
+    </style>
+    <!--http://css3generator.com/ 에서 그림자 속성을  쉽게 생성 할 수 있다.-->
+</head>
+<body>
+    <h1 id="h1-1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+        Nam illo voluptatibus sit excepturi rem cupiditate quo assumenda, error necessitatibus 
+        deserunt eum nihil praesentium commodi provident tenetur perferendis enim aspernatur dolores!
+    </h1>
+    <hr/>
+    <div id="div-1">
+        <h1>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Suscip
+            it deserunt quis, saepe culpa doloribus non error i
+            psa porro quas omnis quam vitae voluptatem? Magni unde odit, quisquam odio rem aspernatur.
+        </h1>
+    </div>
+</body>
+</html>

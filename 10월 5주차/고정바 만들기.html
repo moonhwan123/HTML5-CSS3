@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고정바 만들기</title>
+    <style>
+        *{
+            margin: 0; padding: 0;
+        }
+        html,body{
+            height: 100%;
+        }
+
+        /*고정바 생성*/
+        #top_bar{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: red;
+        }
+        #bottom_bar{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: red;
+        }
+        #left_bar{
+            position: fixed;
+            top: 50px; bottom: 50px;
+            left: 0;
+            width: 50px;
+
+            background: blue;
+        }
+        #right_bar{
+            position: fixed;
+            top: 50px; bottom: 50px;
+            right: 0;
+            width: 50px;
+
+            background: blue;
+        }
+
+        article{ /*고정바에 가려 글씨가 보이지 않으므로 이 속성들을 적용한다.*/
+            margin-top: 50px;
+            margin-left: 50px;
+            margin-right: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="top_bar">
+        <h1>Top_bar</h1>
+    </div>
+
+    <div id="bottom_bar">
+        <h1>Bottom_bar</h1>
+    </div>
+
+    <div id="left_bar">
+        <h1>A</h1>
+    </div>
+
+    <div id="right_bar">
+        <h1>B</h1>
+    </div>
+
+    <article>
+        <h1>Lorem Ipsum dolor sit amet</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis iste quibusdam totam doloribus? Necessitatibus quibusdam quidem officia ipsum repellat officiis veritatis excepturi! Repellat, vitae beatae. Qui eum excepturi assumenda minima?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis iste quibusdam totam doloribus? Necessitatibus quibusdam quidem officia ipsum repellat officiis veritatis excepturi! Repellat, vitae beatae. Qui eum excepturi assumenda minima?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis iste quibusdam totam doloribus? Necessitatibus quibusdam quidem officia ipsum repellat officiis veritatis excepturi! Repellat, vitae beatae. Qui eum excepturi assumenda minima?</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis iste quibusdam totam doloribus? Necessitatibus quibusdam quidem officia ipsum repellat officiis veritatis excepturi! Repellat, vitae beatae. Qui eum excepturi assumenda minima?</p>
+
+    </article>
+</body>
+</html>

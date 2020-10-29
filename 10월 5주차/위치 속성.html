@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px; height: 100px;
+            position: absolute;
+        }
+        .red{
+            background-color: red;
+            left: 10px; top: 10px;
+            z-index: 100; /*숫자가 제일 큰 것이 맨 위로 올라온다.*/
+        }
+        .green{
+            background-color: green;
+            left: 50px; top: 50px;
+            z-index: 10;
+        }
+        .blue{
+            background-color: blue;
+            left: 90px; top: 90px;
+            z-index: 1;
+        }
+
+        body > div{/*자식이 absolut를 사용하면 부모가 영역을 차지 하지 않으므로 이 방법을 활용한다.*/
+           /*1번 방법*/
+            width: 400px; height: 100px;
+            border: 3px solid black;
+
+            /*2번 방법*/
+            position: relative;
+
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <h1>위치 속성</h1>
+    <hr/>
+    <h1>Lorem Ipsum dolor amet</h1>
+    <div>
+        <div class="box red"></div>
+        <div class="box green"></div>
+        <div class="box blue"></div>
+    </div>
+    <h1>Lorem Ipsum dolor amet</h1>
+</body>
+</html>

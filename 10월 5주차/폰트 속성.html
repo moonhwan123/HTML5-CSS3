@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .title{
+            font-size: 30px;
+        }
+
+        .a{font-size: 50px;}
+        .b{font-size: 2em;}
+        .c{font-size: large;}
+        .d{font-size: small;}
+
+        .font_arial{font-family: Arial;}
+        .font_roman{font-family: 'Times New Roman';}
+        .font_test{font-family: '없는폰트',Arial;} /*폰트가 없을 경우를 대비하여 여러개를 설정 할수있다.*/
+        .font_test2{font-family: '없는폰트',sans-serif;}/*다국어 환경에서 사용하는 지네릭-페밀리 폰트 */
+        .font_test3{font-family: '없는폰트',serif;}
+
+        .font_big{font-size: 2em;}
+        .font_italic{font-style: italic;}
+        .font_bold{font-weight: bold;}
+
+        .font_center{text-align: center;}
+        .font_right{text-align: right;}
+
+        .button{
+            width: 150px;
+            height: 70px;
+            background-color: coral;
+            border: 10px solid #ffffff;
+            border-radius: 30px;
+            box-shadow: 5px 5px 5px #a9a9a9;
+        }
+        .button > a {
+            display: block;
+            line-height: 70px; /*수직정렬 - 글자를 감싸는 박스의 높이와 같은 70픽셀을 적용 , 자주사용하니 기억!*/
+        }
+
+        .text_decoration{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <p class="title">폰트 속성</p>
+    <hr/>
+
+    <h1>[font-size]</h1>
+    <p class="a">Lorem Ipsum</p>
+    <p class="b">Lorem Ipsum</p>
+    <p class="c">Lorem Ipsum</p>
+    <p class="d">Lorem Ipsum</p>
+    <hr/>
+
+    <h1>[font-family]</h1>
+    <h1 class="font_arial">Lorem Ipsum</h1>
+    <p class="font_roman">Lorem Ipsum</p>
+    <p class="font_test">Lorem Ipsum</p>
+    <p class="font_test2">Lorem Ipsum</p>
+    <p class="font_test3">Lorem Ipsum</p>
+
+    <p class="font_big">Lorem Ipsum</p>
+    <p class="font_italic">Lorem Ipsum</p>
+    <p class="font_bold">Lorem Ipsum</p>
+    <p class="font_big font_italic font_bold">Lorem Ipsum Lorem Ipsum</p> <!--한꺼번에 적용-->
+    <hr/>
+
+    <h1>[line-height]</h1>
+    <div class="button">
+        <a href="#" class="font_big font_italic font_bold font_center">Click</a>
+    </div>
+    <hr/>
+
+    <h1>[text-align]</h1>
+    <p class="font_big font_italic font_bold font_center">TITLE</p>
+    <p class="font_bold font_right">2020.10.26</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Assumenda ipsum quas perspiciatis corporis corrupti ducimus velit animi reiciendis temporibus voluptatum, officia unde? Consectetur incidunt aspernatur recusandae assumenda, enim velit ea.</p>
+    <hr/>
+
+    <h1>[text-decoration]</h1>
+    <a class="text_decoration" href="#">Lorem Ipsum</a>
+
+</body>
+</html>
