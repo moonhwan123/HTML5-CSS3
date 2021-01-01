@@ -36,15 +36,19 @@ public class BoardController {
 		
 		int total = service.getTotal(cri);
 		log.info("total : " + total);
+		
 		model.addAttribute("list",service.getList(cri));
 //		log.info(service.getList(cri));
+		
 //		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
+	
 	@GetMapping("/register")
 	public void register() {
 		log.info("controller....registerGet");
 	}
+	
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
 		log.info("controller....registerPost" + board);
