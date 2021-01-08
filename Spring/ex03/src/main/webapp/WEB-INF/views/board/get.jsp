@@ -181,7 +181,6 @@ $(document).ready(function() {
 			
 			console.log("replyCnt : " + replyCnt);
 			console.log("list : " + list);
-			console.log(list);
 			
 			if(page == -1){
 				pageNum = Math.ceil(replyCnt/10.0);

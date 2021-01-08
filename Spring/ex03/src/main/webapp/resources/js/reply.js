@@ -47,19 +47,21 @@ var replyService = (function() {
 	    var bno = param.bno;
 	    var page = param.page || 1;
 	    
-	    $.getJSON("/replies/pages/" + bno + "/" + page + ".json",
-	        function(data) {
+	    $.getJSON("/replies/pages/" + bno + "/" + page + ".json",function(data) {
 	    	
-	          if (callback) {
+	          if (callback) { // data 인수에는 return 되어진 data 가 저장되어 있다
+
 	            //callback(data); // 댓글 목록만 가져오는 경우 
 	            callback(data.replyCnt, data.list); //댓글 숫자와 목록을 가져오는 경우 
-	          }
-	        }).fail(function(xhr, status, err) {
+	          }//end if
+	          
+	        }//end function(data)
+	    ).fail(function(xhr, status, err) {
 	      if (error) {
 	        error();
 	      }
-	    });
-	  }
+	    });//end fail()
+	  }//end getList()
 
 	
 	function remove(rno, callback, error) {
