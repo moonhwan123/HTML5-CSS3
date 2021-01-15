@@ -4,6 +4,49 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
 
+<style>
+	.uploadResult {
+		width: 100%;
+		background-color: gray;
+	}
+	
+	.uploadResult ul {
+		display: flex;
+		flex-flow: row;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.uploadResult ul li {
+		list-style: none;
+		padding: 10px;
+	}
+	
+	.uploadResult ul li img {
+		width: 100px;
+	}
+</style>
+
+<style>
+	.bigPictureWrapper {
+	  position: absolute;
+	  display: none;
+	  justify-content: center;
+	  align-items: center;
+	  top:0%;
+	  width:100%;
+	  height:100%;
+	  background-color: gray; 
+	  z-index: 100;
+	}
+	
+	.bigPicture {
+	  position: relative;
+	  display:flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+</style>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -68,8 +111,6 @@
 
 				</form>
 
-			
-
 			</div>
 			<!--  end panel-body -->
 			
@@ -79,6 +120,26 @@
 	<!-- end panel -->
 </div>
 <!-- /.row -->
+
+<!-- 첨부파일 보여주기 -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+			
+				<div class="panel-heading">Files</div>
+				
+				<div class="panel-body">
+					<div class="uploadResult">
+						<ul>
+									
+						</ul>
+					</div>
+				</div> <!-- end panel-body -->
+				
+			</div> <!-- end panel panel-default -->
+		</div> <!-- end col-lg-12 -->
+	</div> <!-- end row 첨부 -->
+
 
 <!-- 댓글 여기서부터 -->
 <div class='row'>
@@ -160,10 +221,15 @@
 </div>
 <!-- /.modal -->
 
+<div class='bigPictureWrapper'>
+  <div class='bigPicture'>
+  </div>
+</div>
 
 <c:set var="time" value="${System.currentTimeMillis()}"></c:set>
 
 <script type="text/javascript" src="/resources/js/reply.js?time=${time }"></script>
+
 
 <script>
 $(document).ready(function() {
@@ -348,6 +414,81 @@ $(document).ready(function() {
      	  });
      	  
     });
+    
+    
+    
+    //첨부파일 불러오기
+    (function(){
+		var bno = '<c:out value="${board.bno}" />';
+		
+		$.getJSON("/board/getAttachList" , {bno:bno} , function(arr){
+			console.log("...Attach List...")
+			console.log(arr);
+			
+			
+			var str = "";
+			
+		    $(arr).each(function(i, attach){
+		        
+		        if(attach.fileType){ //image type
+		        	
+		          var fileCallPath =  encodeURIComponent( attach.uploadPath+ "/s_"+attach.uuid +"_"+attach.fileName);
+		             
+		          str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+		          str += "<img src='/display?fileName="+fileCallPath+"'>";
+		          str += "</div>";
+		          str +"</li>";
+		          
+		        }else{ // not img
+		        	
+		          str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' data-filename='"+attach.fileName+"' data-type='"+attach.fileType+"' ><div>";
+		          str += "<span> "+ attach.fileName+"</span><br/>";
+		          str += "<img src='/resources/img/ERD.png'></a>";
+		          str += "</div>";
+		          str +"</li>";
+		          
+		        }
+		    });
+			
+			$(".uploadResult ul").html(str);
+			
+		}); // end getJSON()
+	})();// end function()
+	
+	
+	//다운로드 및 이미지 원본 보여주기
+	$(".uploadResult").on("click","li",function(e){
+		console.log("view image");
+		
+		var liObj = $(this);
+		
+		var path = encodeURIComponent(liObj.data("path")+"/"+liObj.data("uuid")+"_"+liObj.data("filename"));
+		
+		if(liObj.data("type")){
+			showImage(path.replace(new RegExp(/\\/g),"/"));
+		}else{
+			//file download
+			self.location="/download?fileName="+path;
+		}//end if
+		
+	});// end
+	
+	//img 보여주기
+	function showImage(fileCallPath){
+		alert(fileCallPath);
+		$(".bigPictureWrapper").css("display","flex").show();
+		$(".bigPicture")
+	    .html("<img src='/display?fileName="+fileCallPath+"' >")
+	    .animate({width:'100%', height: '100%'}, 1000);
+	}
+	
+	//커진 이미지 닫기
+	$(".bigPictureWrapper").on("click",function(e){
+	    $(".bigPicture").animate({width:'0%', height: '0%'}, 1000);
+	    setTimeout(function(){
+	      $('.bigPictureWrapper').hide();
+	    }, 1000);
+	})
    
 });
 </script>
