@@ -14,6 +14,13 @@
 <h1>/sample/admin page</h1>
 
 
+<p>principal : <sec:authentication property="principal"/> </p>
+<p>MemberVO : <sec:authentication property="principal.member"/> </p>
+<p>userName : <sec:authentication property="principal.member.userName"/> </p> 
+<p>userid : <sec:authentication property="principal.username"/> </p> 
+<p>authList : <sec:authentication property="principal.member.authList"/> </p>
+
+
 <a href="/customLogout">Logout</a>
 
 

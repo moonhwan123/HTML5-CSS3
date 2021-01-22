@@ -14,15 +14,15 @@ public class CommonController {
 	
 	@GetMapping("/accessError")
 	public void accessDenied(Authentication auth, Model model) {
-		log.info("access denied : " + auth);
+		log.info("At /customError -> access denied : " + auth);
 		
 		model.addAttribute("msg","access Denied");
 	}
 	
 	@GetMapping("/customLogin")
 	public void loginInput(String error, String logout, Model model) {
-		log.info("error : " + error);
-		log.info("logout : " + logout);
+		log.info("At /customLogin -> error : " + error);
+		log.info("At /customLogin -> logout : " + logout);
 		
 		if(error != null) {
 			model.addAttribute("error" , "Login Error Check Your Account");

@@ -16,22 +16,22 @@
   
   <form method='post' action="/login">
   
-  <div>
-    <input type='text' name='username' value='admin'>
-  </div>
-  <div>
-    <input type='password' name='password' value='admin'>
-  </div>
-  <div>
-  <div>
-    <input type='checkbox' name='remember-me'> Remember Me
-  </div>
-
-  <div>
-    <input type='submit'>
-  </div>
-    <input type="hidden" name="${_csrf.parameterName}"
-    value="${_csrf.token}" />
+	  <div>
+	    <input type='text' name='username' >
+	  </div>
+	  <div>
+	    <input type='password' name='password' >
+	  </div>
+	  
+	  <div>
+	    <input type='checkbox' name='remember-me'> Remember Me
+	  </div>
+	
+	  <div>
+	    <input type='submit'>
+	  </div>
+	    <input type="hidden" name="${_csrf.parameterName}"
+	    value="${_csrf.token}" />
   
   </form>
   
