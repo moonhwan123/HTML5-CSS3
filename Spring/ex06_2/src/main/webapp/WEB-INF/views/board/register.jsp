@@ -152,6 +152,11 @@
 		
 		
 		//파일 업로드관련
+		
+		//스프링 시큐리티 추가로 인한 토큰 선언
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+		
 		//파일 확장자 제한 및 용량 제한
 		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
 		var maxsize = 5242880; // 5MB
@@ -188,6 +193,9 @@
 				url: '/uploadAjaxAction',
 				processData: false,
 				contentType: false,
+				beforeSend: function(xhr){
+					xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+				},
 				data: formData,
 				type: 'POST',
 				dataType: 'json',
@@ -255,6 +263,9 @@
 			$.ajax({
 				url: '/deleteFile',
 				data: {fileName: targetFile , type: type},
+				beforeSend: function(xhr){
+					xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+				},
 				dataType: 'text',
 				type: 'POST',
 				success: function(result){

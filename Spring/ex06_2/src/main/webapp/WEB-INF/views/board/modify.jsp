@@ -290,6 +290,10 @@ $(document).ready(function() {
 		    return true;
 		}
 	
+		//스프링 시큐리티 추가로 인한 토큰 선언
+		var csrfHeaderName = "${_csrf.headerName}";
+		var csrfTokenValue = "${_csrf.token}";
+	  
 	  $("input[type='file']").change(function(e){
 
 		    var formData = new FormData();
@@ -311,6 +315,9 @@ $(document).ready(function() {
 		      url: '/uploadAjaxAction',
 		      processData: false, 
 		      contentType: false,
+				beforeSend: function(xhr){
+					xhr.setRequestHeader(csrfHeaderName,csrfTokenValue);
+				},
 		      data: formData,
 		      type: 'POST',
 		      dataType:'json',

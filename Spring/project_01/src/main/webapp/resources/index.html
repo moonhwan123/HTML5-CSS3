@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-default fixed-top navbar-expand-lg">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="flase">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" herf="index.html">Test Page</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left">
+                    <li><a href="#">test1</a><span class="sr-only"></span></span></li>
+                    <li><a href="instructor.html">test2</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                            aria-haspopup="true" aria-expanded="false">test3<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="lecture.html?lecture=C">test3-1</a></li>
+                            <li><a href="lecture.html?lecture=JAVA">test3-2</a></li>
+                            <li><a href="lecture.html?lecture=ANDROID">test3-3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <!--
+                <form class="navbar-form navbar-left"> 
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+
+                    </div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </form>
+                -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="loginform.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="container">
+        <!--jumbotron-->
+        <div class="jumbotron">
+            <h1 class="text-center">Test index</h1>
+            <p class="text-center">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi nulla, commodi quidem quod quae quas consequatur aspernatur assumenda id cupiditate distinctio neque vel maxime facere perferendis quibusdam, tempore recusandae minus!</p>
+            <p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">TEST</a></p>
+        </div><!--end jumbotron-->
+
+        
+        <div class="row">
+            <div class="col-md-4">
+                <h4>MODAL</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, fugiat dolore. Beatae quod modi amet repudiandae iste magnam est ea vel. Magnam esse at rem culpa numquam optio nemo animi!</p>
+                <p><a class="btn btn-default" data-target="#modal" data-toggle="modal">자세히</a></p>
+            </div>
+            <div class="col-md-4">
+                <h4>MODAL</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, fugiat dolore. Beatae quod modi amet repudiandae iste magnam est ea vel. Magnam esse at rem culpa numquam optio nemo animi!</p>
+                <p><a class="btn btn-default" href="#">자세히</a></p>
+            </div>
+            <div class="col-md-4">
+                <h4>MODAL</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id, fugiat dolore. Beatae quod modi amet repudiandae iste magnam est ea vel. Magnam esse at rem culpa numquam optio nemo animi!</p>
+                <p><a class="btn btn-default" href="#">자세히</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    &nbsp;&nbsp;TEST
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="img/C.png" alt="C언어"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="#">TEST</a>&nbsp;<span class="badge">New</span></h4>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut tempore asperiores numquam, error quasi itaque eveniet recusandae, 
+                        nobis perspiciatis architecto eum aliquid sunt, repudiandae veniam saepe quae quo in odit.
+                    </div>
+                </div>
+                <hr>
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#"><img class="media-object" src="img/android.png" alt="android"></a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading"><a href="#">TEST</a>&nbsp;<span class="badge">New</span></h4>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut tempore asperiores numquam, error quasi itaque eveniet recusandae, 
+                        nobis perspiciatis architecto eum aliquid sunt, repudiandae veniam saepe quae quo in odit.
+                    </div>
+                </div>
+            </div><!-- end panel-body -->
+        </div><!-- end panel-primary -->
+
+    </div><!-- end container -->
+
+
+    <!-- footer --> 
+    <div class="jumbotron text-center mt-5 mb-0">
+        <h3 class="text-secondary">Footer</h3> 
+        <p>
+            Copyrights
+            <span class="text-primary">MoonHwan</span> 
+            / Designed by 
+            <span class="text-primary">MoonHwan</span>
+        </p> 
+    </div><!--end footer-->
+
+
+
+</body>
+</html>

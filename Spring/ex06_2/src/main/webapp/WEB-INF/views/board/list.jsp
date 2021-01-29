@@ -94,8 +94,7 @@
 						</c:if>
 						
 						<!-- 페이지 숫자 -->
-						<c:forEach var="num" begin="${pageMaker.startPage}"
-							end="${pageMaker.endPage}">
+						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
 							<li class="paginate_button  ${pageMaker.cri.pageNum == num ? "active":""} ">
 								<a href="${num}">${num}</a>
 							</li>
