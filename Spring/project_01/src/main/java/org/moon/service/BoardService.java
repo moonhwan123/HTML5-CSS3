@@ -9,8 +9,14 @@ public interface BoardService {
 	
 	public List<BoardVO> boardList(Criteria cri);
 	
-	public void boardInsert(BoardVO vo);
+	public void boardRegister(BoardVO vo);
 	
-	public int totalCount();
+	public int totalCount(Criteria cri);
+	
+	public BoardVO boardRead(Long bno);
+	
+	public boolean boardModify(BoardVO vo);
+	
+	public boolean boardRemove(BoardVO vo);
 	
 }

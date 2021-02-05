@@ -5,11 +5,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.extern.log4j.Log4j;
 
 
 @ToString
 @Setter
 @Getter
+@Log4j
 public class Criteria {
 
   private int pageNum;
@@ -28,18 +30,18 @@ public class Criteria {
   }
   
   public String[] getTypeArr() {
-    
+    log.info(type);
     return type == null? new String[] {}: type.split("");
   }
   
-  public String getListLink() {
-	  
-	  UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
-			  .queryParam("pageNum", this.pageNum)
-			  .queryParam("amount", this.amount)
-			  .queryParam("type", this.type)
-			  .queryParam("keyword", this.keyword);
-	  
-	  return builder.toUriString();
-  }
+//  public String getListLink() {
+//	  
+//	  UriComponentsBuilder builder = UriComponentsBuilder.fromPath("")
+//			  .queryParam("pageNum", this.pageNum)
+//			  .queryParam("amount", this.amount)
+//			  .queryParam("type", this.type)
+//			  .queryParam("keyword", this.keyword);
+//	  
+//	  return builder.toUriString();
+//  }
 }

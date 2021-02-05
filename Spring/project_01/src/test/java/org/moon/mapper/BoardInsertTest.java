@@ -28,7 +28,7 @@ public class BoardInsertTest {
 			vo.setWriter("test"+x);
 			vo.setContent("test"+x);
 			
-			mapper.boardInsert(vo);
+			mapper.boardRegister(vo);
 		}
 	}
 	

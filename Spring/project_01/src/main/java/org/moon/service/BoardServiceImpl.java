@@ -26,16 +26,37 @@ public class BoardServiceImpl implements BoardService {
 	}
 	
 	@Override
-	public void boardInsert(BoardVO vo) {
+	public void boardRegister(BoardVO vo) {
 		
-		boardMapper.boardInsert(vo);
+		boardMapper.boardRegister(vo);
 		
 	}
 	
 	@Override
-	public int totalCount() {
+	public int totalCount(Criteria cri) {
 		
-		return boardMapper.totalCount();
+		return boardMapper.totalCount(cri);
+	}
+	
+	@Override
+	public BoardVO boardRead(Long bno) {
+		return boardMapper.boardRead(bno);
+	}
+	
+	@Override
+	public boolean boardModify(BoardVO vo) {
+		
+		boolean modifyResult = boardMapper.boardModify(vo) == 1;
+		
+		return modifyResult;
 	}
 
+	
+	@Override
+	public boolean boardRemove(BoardVO vo) {
+		
+		boolean removeResult = boardMapper.boardRemove(vo) == 1;
+		
+		return removeResult;
+	}
 }
