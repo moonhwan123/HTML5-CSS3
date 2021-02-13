@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left">
                     <li><a href="/board/boardList">Board</a><span class="sr-only"></span></li>
-                    <li><a href="instructor.html">test2</a></li>
+                    <li><a href="/fileBoard/fileBoardList">File Board</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
                             aria-haspopup="true" aria-expanded="false">test3<span class="caret"></span></a>

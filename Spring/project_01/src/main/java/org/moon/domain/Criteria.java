@@ -1,6 +1,5 @@
 package org.moon.domain;
 
-import org.springframework.web.util.UriComponentsBuilder;
 
 import lombok.Getter;
 import lombok.Setter;
