@@ -71,7 +71,7 @@ public class ReplyController {
 	}
 	
 	@DeleteMapping(value = "/{rno}", produces = { MediaType.TEXT_PLAIN_VALUE })
-	public ResponseEntity<String> remove(@PathVariable("rno") int rno) {
+	public ResponseEntity<String> remove(@PathVariable("rno") Long rno) {
 		log.info("...........At ReplyController..........");
 		log.info("...........remove..........");
 		log.info("Target RNO : " + rno);

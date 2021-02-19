@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.moon.domain.Criteria;
 import org.moon.domain.FileBoardVO;
+import org.moon.mapper.BoardAttachMapper;
 import org.moon.mapper.BoardMapper;
 import org.moon.mapper.FileBoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -21,15 +23,29 @@ public class FileBoardServiceImpl implements FileBoardService {
 	@Setter(onMethod_ = @Autowired)
 	private FileBoardMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private BoardAttachMapper attachMapper;
+	
 	
 	@Override
 	public List<FileBoardVO> fileBoardList(Criteria cri) {
 		return mapper.fileBoardList(cri);
 	}
-
+	
+	@Transactional
 	@Override
 	public void fileBoardRegister(FileBoardVO vo) {
 		mapper.fileBoardRegister(vo);
+		
+		if(vo.getAttachList() == null || vo.getAttachList().size() <= 0) {
+			return;
+		}
+		
+		vo.getAttachList().forEach(attach -> {
+			attach.setBno(vo.getBno());
+			attachMapper.insert(attach);
+		});
+		
 	}
 
 	@Override

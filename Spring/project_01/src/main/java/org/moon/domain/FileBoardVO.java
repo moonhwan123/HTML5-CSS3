@@ -15,7 +15,6 @@ public class FileBoardVO {
 	private Date regdate;
 	private Date updateDate;
 	  
-	private int replyCnt;
 	  
-//	private List<BoardAttachVO> attachList;
+	private List<BoardAttachVO> attachList;
 }

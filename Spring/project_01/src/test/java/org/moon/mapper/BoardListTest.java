@@ -22,4 +22,9 @@ public class BoardListTest {
 //	public void testBoardList() {
 //		mapper.boardList().forEach(list -> log.info(list));
 //	}
+	
+	@Test
+	public void adsasd() {
+		mapper.updateReplyCnt(99L, -4);
+	}
 }

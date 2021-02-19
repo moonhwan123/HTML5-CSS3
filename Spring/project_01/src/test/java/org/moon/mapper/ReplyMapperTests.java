@@ -27,19 +27,18 @@ public class ReplyMapperTests {
 //		log.info(mapper);
 //	}
 	
-//	@Test
-//	public void insertTest() {
-//		ReplyVO vo = new ReplyVO();
-//		
-//		for(int x=0; x<9; x++) {
-//		vo.setBno(108L);
-//		vo.setReply("test");
-//		vo.setReplyer("test");
-//		
-//		mapper.replyInsert(vo);
-//		
-//		}
-//	}
+	@Test
+	public void insertTest() {
+		ReplyVO vo = new ReplyVO();
+		
+		vo.setBno(99L);
+		vo.setReply("123");
+		vo.setReplyer("123");
+		
+		mapper.replyInsert(vo);
+		
+		
+	}
 	
 //	@Test
 //	public void readTest() {
@@ -69,15 +68,7 @@ public class ReplyMapperTests {
 //		log.info("...................................modify : "+mapper.replyModify(vo));
 //	}
 	
-	@Test
-	public void replyListTest() {
-		Long bno = 108L;
-		Criteria cri = new Criteria(2,10);
-		
-		List<ReplyVO> list = mapper.getReplyList(cri, bno);
 
-		list.forEach(reply -> log.info(reply));
-	}
 
 	
 

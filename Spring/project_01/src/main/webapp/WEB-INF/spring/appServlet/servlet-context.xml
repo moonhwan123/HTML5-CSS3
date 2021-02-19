@@ -23,4 +23,8 @@
 	
 	<context:component-scan base-package="org.moon.controller" />
 	
+	<!-- 첨부파일 관련  -->
+	<beans:bean id="multipartResolver" 
+		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></beans:bean>
+	
 </beans:beans>

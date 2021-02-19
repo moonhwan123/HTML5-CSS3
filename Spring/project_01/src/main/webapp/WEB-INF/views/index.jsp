@@ -60,7 +60,7 @@
 		<div class="panel-body">
 			<div class="media">
 				<div class="media-left">
-					<a href="#"><img class="media-object" src="img/C.png" alt="C언어"></a>
+					<a href="#"><img class="media-object" src="resources/img/C.png" alt="C언어"></a>
 				</div>
 				<div class="media-body">
 					<h4 class="media-heading">
@@ -75,7 +75,7 @@
 			<hr>
 			<div class="media">
 				<div class="media-left">
-					<a href="#"><img class="media-object" src="img/android.png"
+					<a href="#"><img class="media-object" src="resources/img/android.png"
 						alt="android"></a>
 				</div>
 				<div class="media-body">

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h3>
+                {{message}}
+                {{newData}}
+            </h3>
+        </header>
+        
+        <section>
+            <p v-bind:id="uid"></p>
+            <button v-on:click="clickBtn">clickBtn</button>
+            <button v-on:click="eventMethod">eventMethod</button>
+        </section>
+
+        <ul v-if="flag">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data : {
+                message : 'Hello Vue.js',
+                newData : 'New Data',
+                uid : '10',
+                flag : true
+            },
+            methods : {
+                clickBtn(){
+                    console.log("hi");
+                },
+                eventMethod : function(){
+                    console.log("hi2");
+                }
+            }
+            
+        });
+    </script>
+</body>
+
+</html>

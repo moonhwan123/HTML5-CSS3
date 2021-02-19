@@ -59,6 +59,18 @@ public class FileBoardController {
 		
 		log.info(vo.getBno());
 		
+		log.info("넘어온 FileBoardVO 정보 - " + vo);
+		
+		if(vo.getAttachList() != null) {
+			vo.getAttachList().forEach(attach -> {
+				log.info(attach);
+				log.info("uploadPath : "+attach.getUploadPath());
+			});
+		}
+		
+		log.info("");
+		
+		
 		fileBoardService.fileBoardRegister(vo);
 		
 		rttr.addFlashAttribute("result",vo.getBno());
