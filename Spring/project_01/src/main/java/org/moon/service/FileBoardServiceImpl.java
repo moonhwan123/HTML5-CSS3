@@ -2,6 +2,7 @@ package org.moon.service;
 
 import java.util.List;
 
+import org.moon.domain.BoardAttachVO;
 import org.moon.domain.Criteria;
 import org.moon.domain.FileBoardVO;
 import org.moon.mapper.BoardAttachMapper;
@@ -71,6 +72,11 @@ public class FileBoardServiceImpl implements FileBoardService {
 		boolean removeResult = mapper.fileBoardRemove(vo) == 1;
 		
 		return removeResult;
+	}
+	
+	@Override
+	public List<BoardAttachVO> getAttachList(Long bno) {
+		return attachMapper.findByBno(bno);
 	}
 
 }

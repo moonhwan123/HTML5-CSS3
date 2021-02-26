@@ -5,6 +5,50 @@
 <!DOCTYPE html>
 <%@include file="../include/header.jsp"%>
 
+<style>
+	.uploadResult {
+		width: 100%;
+		background-color: gray;
+	}
+	
+	.uploadResult ul {
+		display: flex;
+		flex-flow: row;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	.uploadResult ul li {
+		list-style: none;
+		padding: 10px;
+	}
+	
+	.uploadResult ul li img {
+		width: 100px;
+	}
+</style>
+
+<style>
+	.bigPictureWrapper {
+	  position: absolute;
+	  display: none;
+	  justify-content: center;
+	  align-items: center;
+	  top:0%;
+	  width:100%;
+	  height:100%;
+	  background-color: gray; 
+	  z-index: 100;
+	}
+	
+	.bigPicture {
+	  position: relative;
+	  display:flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+</style>
+
  <div class="container">
         <h3>BoardRead</h3>
         <hr>
@@ -61,7 +105,19 @@
 	            	value="<fmt:formatDate pattern="yyyy-MM-dd" value="${board.updateDate}" />" readonly="readonly"/>
 	            </div>
             </div>
+            <br><br>
+            <div class="col-sm-9">
+                <h5>ATTACH FILES</h5>
+                <div class="uploadResult">
+                    <ul>
+                    
+                    </ul>
+                </div>
+                <br>
+            </div>
         </div><!-- end row -->
+        
+        
         <br><br>
         <button type="button" data-oper='remove' class="btn btn-default pull-left">Remove</button>
         <button type="button" data-oper='modify' class="btn btn-default pull-left">Modify</button>
@@ -76,6 +132,7 @@
 			<input type='hidden' name='bno' value='<c:out value="${board.bno}"/>' />
 		</form>
 		<hr>
+		
     </div><!-- end container -->'
     
 	
@@ -120,6 +177,11 @@
 		</div><!-- end modal -->
 	</div><!-- end row -->
 	<!-- 댓글 처리용 모달 끝 -->
+	
+	<div class='bigPictureWrapper'>
+  		<div class='bigPicture'>
+  		</div>
+	</div>
 
 
 <!-- 기본적인 스크립트 -->
@@ -158,6 +220,71 @@ $(document).ready(function() {
 });
 </script>
 
+<!-- 파일 처리용 스크립트 -->
+<script type="text/javascript">
+$(document).ready(function() {
+	(function(){
+		var bno = '<c:out value="${board.bno}" />';
+		$.getJSON("/fileBoard/getAttachList",{bno:bno},function(arr){
+			var str = "";
+			console.log(arr);
+			$(arr).each(function(i,attach){
+				//if img
+				if(attach.fileType){
+					var fileCallPath = encodeURIComponent(attach.uploadPath + "/s_" + attach.uuid + "_" + attach.fileName);
+					
+					str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' ";
+					str += "data-fileName='"+attach.fileName+"' data-type='"+attach.fileType+"'>";
+					str += "<div><img src='/display?fileName="+fileCallPath+"'></div></li>";
+				}else{ // not img
+					str += "<li data-path='"+attach.uploadPath+"' data-uuid='"+attach.uuid+"' ";
+					str += "data-fileName='"+attach.fileName+"' data-type='"+attach.fileType+"'>";
+					str += "<div><span>"+attach.fileName+"</span><br/><img src='/resources/img/attach.png'></div></li>";
+				}
+			});//end each
+			
+			$(".uploadResult ul").html(str);
+			
+		});//end getJSON
+	})();//end function()
+	
+	
+	$(".uploadResult").on("click","li",function(e){
+		console.log("attach file click");
+		
+		var liObj = $(this);
+		
+		var path = encodeURIComponent(liObj.data("path")+"/"+liObj.data("uuid")+"_"+liObj.data("filename"));
+		
+		console.log("path : "+path);
+		
+		if(liObj.data("type")){
+			
+			//img
+			showImage(path.replace(new RegExp(/\\/g),"/"));
+		}else{
+			//download
+			self.location = "/download?fileName="+path;
+		}
+	});
+	
+	//이미지 원본 보여주기
+	function showImage(fileCallPath){
+		$(".bigPictureWrapper").css("display","flex").show();
+		
+		$(".bigPicture").html("<img src='/display?fileName="+fileCallPath+"'>").animate({width:'50%',height:'50%'},1000);
+	}
+	
+	//이미지 원본 클릭시 이미지 닫기
+	$(".bigPictureWrapper").on("click",function(e){
+		$(".bigPicture").animate({width:'0%',height:'0%'},1000);
+		setTimeout(function(){
+			$('.bigPictureWrapper').hide();
+		},1000);
+	});
+	
+});
+</script>
 
 
 

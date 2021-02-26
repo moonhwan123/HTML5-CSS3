@@ -1,12 +1,19 @@
 package org.moon.controller;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
+import org.moon.domain.BoardAttachVO;
 import org.moon.domain.Criteria;
 import org.moon.domain.FileBoardVO;
 import org.moon.domain.PageDTO;
 import org.moon.service.FileBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import lombok.AllArgsConstructor;
@@ -107,12 +115,17 @@ public class FileBoardController {
 	
 	@PostMapping("/fileBoardRemove")
 	public String fileBoardRemovePost(FileBoardVO vo,@ModelAttribute("cri")Criteria cri,RedirectAttributes rttr) {
-		log.info("At fileBoardController ......  fileBoardRemovePost()");
+		log.info("===========================At fileBoardController ......  fileBoardRemovePost()=========================");
 		log.info("삭제 하는 게시물 번호 : " + vo.getBno());
 		log.info("이전 페이지에서 넘어온 cri 정보 : " + cri);
 		
+		List<BoardAttachVO> list = fileBoardService.getAttachList(vo.getBno());
+		
 		if(fileBoardService.fileBoardRemove(vo)) {
 			rttr.addFlashAttribute("result","success remove");
+			
+			//실제 폴더에 업로드 된 첨부파일 같이 삭제
+			deleteFiles(list);
 		}
 		
 		rttr.addAttribute("pageNum",cri.getPageNum());
@@ -121,6 +134,50 @@ public class FileBoardController {
 		rttr.addAttribute("keyword",cri.getKeyword());
 		
 		return "redirect:/fileBoard/fileBoardList";
+		//return "redirect:/fileBoard/fileBoardList" + cri.getListLink();
+	}
+	
+	@GetMapping(value = "/getAttachList" , produces =MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<BoardAttachVO>> getAttachList(Long bno){
+		log.info("==================getAttachList()=====================");
+		
+		return new ResponseEntity<>(fileBoardService.getAttachList(bno),HttpStatus.OK);
+	}
+	
+	//실제 파일 삭제
+	private void deleteFiles(List<BoardAttachVO> attachList) {
+		
+		if(attachList == null || attachList.size() == 0) {
+			return;
+		}
+		
+		log.info("============================deleteFiles()================================");
+		log.info("넘어온 파일 리스트 : " + attachList);
+		
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\" + attach.getUuid() + "_"
+						+ attach.getFileName());
+				log.info("삭제할 파일....." + file);
+				Files.deleteIfExists(file);
+				
+				if(Files.probeContentType(file).startsWith("image")) {
+					
+					Path thumbNail = Paths.get("C:\\upload\\" + attach.getUploadPath() + "\\s_" + attach.getUuid() + "_"
+						+ attach.getFileName());
+					log.info("섬네일 삭제......" + thumbNail);
+					Files.delete(thumbNail);
+					
+				}//end if
+				
+				
+			} catch (Exception e) {
+				log.error(e.getMessage());
+			}//end try/catch
+			
+		});//end forEach
+		
 	}
 	
 }
