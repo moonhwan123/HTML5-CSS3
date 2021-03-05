@@ -62,13 +62,23 @@ public class FileBoardServiceImpl implements FileBoardService {
 
 	@Override
 	public boolean fileBoardModify(FileBoardVO vo) {
+		attachMapper.deleteAll(vo.getBno());
+		
 		boolean modifyResult = mapper.fileBoardModify(vo) == 1;
+		
+		if(modifyResult && vo.getAttachList() != null && vo.getAttachList().size() > 0) {
+			vo.getAttachList().forEach(attach -> {
+				attach.setBno(vo.getBno());
+				attachMapper.insert(attach);
+			});
+		}
 		
 		return modifyResult;
 	}
 
 	@Override
 	public boolean fileBoardRemove(FileBoardVO vo) {
+		
 		boolean removeResult = mapper.fileBoardRemove(vo) == 1;
 		
 		return removeResult;
