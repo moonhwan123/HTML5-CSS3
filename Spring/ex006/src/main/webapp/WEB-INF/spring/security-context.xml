@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="customAccessDenied" class="org.moon.security.CustomAccessDeniedHandler"></bean>
+	<bean id="customLoginSuccess" class="org.moon.security.CustomLoginSuccessHandler"></bean>
+	<!-- <bean id="customPasswordEncoder" class="org.moon.security.CustomNoOpPasswordEncoder"></bean> -->
+	<bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+	<bean id="customUserDetailsService" class="org.moon.security.CustomUserDetailService"></bean>
+
+	<sec:http auto-config="true" use-expressions="true">
+		<sec:intercept-url pattern="/sample/all" access="permitAll"/>
+		<sec:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
+		<sec:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/>
+		<sec:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
+		<sec:access-denied-handler ref="customAccessDenied" />
+		<sec:logout logout-url="/customLogout" invalidate-session="true" />
+		<sec:csrf disabled="true"/>
+	</sec:http>
+	
+	
+	
+	<sec:authentication-manager>
+	
+		<sec:authentication-provider user-service-ref="customUserDetailsService">
+		
+			<!-- <sec:password-encoder ref="customPasswordEncoder"/> -->
+			<sec:password-encoder ref="bcryptPasswordEncoder"/>
+			
+		</sec:authentication-provider>
+		
+	</sec:authentication-manager>
+
+
+</beans>

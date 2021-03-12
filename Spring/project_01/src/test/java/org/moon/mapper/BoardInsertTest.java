@@ -18,18 +18,31 @@ public class BoardInsertTest {
 	@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
+//	@Test
+//	public void insertTest() {
+//		BoardVO vo = new BoardVO();
+//		
+//		
+//		for(int x=4; x < 100; x++) {
+//			vo.setTitle("test"+x);
+//			vo.setWriter("test"+x);
+//			vo.setContent("test"+x);
+//			
+//			mapper.boardRegister(vo);
+//		}
+//	}
+	
 	@Test
-	public void insertTest() {
-		BoardVO vo = new BoardVO();
+	public void a() {
+		int sum = 0;
 		
-		
-		for(int x=4; x < 100; x++) {
-			vo.setTitle("test"+x);
-			vo.setWriter("test"+x);
-			vo.setContent("test"+x);
-			
-			mapper.boardRegister(vo);
+		for(int i = 0 ; i <= 5 ; i ++) {
+			sum += i;
+			log.info(i);
 		}
+		
+		log.info(sum);
+		
 	}
 	
 }

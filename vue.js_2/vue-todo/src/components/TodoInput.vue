@@ -24,31 +24,36 @@
 import Modal from './common/Modal.vue'
 
 export default {
-    data : function () {
+    data() {
         return {
             newTodoItem : "",
             showModal : false
         };
     },
     methods : {
-        addTodo : function() {
+        addTodo() {
             if(this.newTodoItem !== ''){
-              this.$emit('addTodoEvent',this.newTodoItem);
+              // this.$emit('addTodoEvent',this.newTodoItem);
+              this.$store.commit('addOneItem',this.newTodoItem);
               this.clearInput();
             }else{
               this.showModal = !this.showModal;
             }
 
         },
-        clearInput : function(){
+        clearInput(){
           this.newTodoItem = '';
         },
-        closeModal : function(){
+        closeModal(){
           this.showModal = !this.showModal;
         }
     },
     components : {
-      Modal : Modal
+      //ES5
+      // Modal : Modal
+
+      //ES6
+      Modal
     }
 }
 </script>

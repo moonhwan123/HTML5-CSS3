@@ -1,14 +1,19 @@
 <template>
   <header>
     <h1>
-        My Scheduler Todo it!
+        <!-- My Scheduler Todo it! -->
+        {{ this.getHeaderText }}
     </h1>
   </header>
 </template>
 
 <script>
-export default {
+import { mapGetters } from 'vuex'
 
+export default{
+  computed : {
+    ...mapGetters(['getHeaderText'])
+  }
 }
 </script>
 

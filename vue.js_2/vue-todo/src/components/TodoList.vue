@@ -1,12 +1,12 @@
 <template>
   <transition-group name="list" tag="ul">
-    <li class="shadow" v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.item">
+    <li class="shadow" v-for="(todoItem,index) in this.getTodoItems" v-bind:key="todoItem.item">
         <i class="fas fa-check checkBtn" v-bind:class="{checkBtnCompleted:todoItem.completed}" 
-            v-on:click="toggleComplete(todoItem,index)"></i>
+            v-on:click="toggleComplete({todoItem,index})"></i>
         <span v-bind:class="{textCompleted:todoItem.completed}">
             {{ todoItem.item }}
         </span>
-        <span class="removeBtn" v-on:click="removeTodo(todoItem,index)">
+        <span class="removeBtn" v-on:click="removeTodo({todoItem,index})">
             <i class="fas fa-trash-alt"></i>
         </span>
     </li>
@@ -14,15 +14,37 @@
 </template>
 
 <script>
+import { mapGetters,mapMutations } from 'vuex'
+
 export default {
-    props : ['propsdata'],
     methods : {
-        removeTodo : function(todoItem,index){
-            this.$emit('removeTodoEvent',todoItem,index);
-        },
-        toggleComplete : function(todoItem,index){
-            this.$emit('toggleCompleteEvent',todoItem,index);
-        }
+        // helper 함수 사용 후
+        ...mapMutations({
+          removeTodo : 'removeOneItem',
+          toggleComplete : 'toggleCompleteOne'
+        }),
+
+        // helper함수 사용 전
+        // removeTodo(todoItem,index){
+        //     // this.$emit('removeTodoEvent',todoItem,index);
+        //     this.$store.commit('removeOneItem',{
+        //       todoItem : todoItem,
+        //       index : index
+        //     });
+        // },
+        // toggleComplete(todoItem,index){
+        //     // this.$emit('toggleCompleteEvent',todoItem,index);
+        //     this.$store.commit('toggleCompleteOne',{
+        //       todoItem : todoItem,
+        //       index : index
+        //     });            
+        // }
+    },
+    computed : {
+      // todoItems(){
+      //   return this.$store.getters.getTodoItems;
+      // },
+      ...mapGetters(['getTodoItems'])
     }
 }
 </script>
